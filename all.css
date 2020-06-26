@@ -1,0 +1,15 @@
+/* CSS for Mr. Morse */
+
+body {
+	background-color: rgba(70, 90, 70, 0.5);
+}
+
+#tx-alpha {
+	border: 2px solid grey;
+	border-radius: 10%;
+}
+
+#msg-tx {
+	font-size: 100px;
+}
+
