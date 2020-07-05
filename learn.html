@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<title> Mr. Morse - Learn</title>
+		<meta name="description" content="Mr. Morse will help you learn morse code online. Learn morse code online.">
+		<link rel="stylesheet" type="text/css" href="all.css">
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+         <a class="navbar-brand">
+            <h2 class="mr-3">Mr. Morse</h2>
+         </a>
+         <div class="navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+               <li class="nav-item ">
+                  <a class="nav-link" href="index.html" >Home</a>
+               </li>
+               <li class="nav-item ">
+                  <a class="nav-link active" href="learn.html" >Learn</a>
+               </li>
+               <li class="nav-item ">
+                  <a class="nav-link " href="about.html">About</a>
+               </li>
+            </ul>
+         </div>
+      </nav>
+
+		<div id="main" class="container-fluid my-2 py-3" style="background-color: white" >
+			<h2> Convert to morse code </h2>	
+			<hr>				
+			<div class="row m-2 mt-5">
+				<div id="tx-alpha" class="col-3 py-5 d-flex justify-content-center">
+						<h1 id="msg-tx"> Message </h1>
+				</div>
+				<div class="col ml-5 ">
+					<form>
+							<h4> Morse Code: </h4>
+							<h1 id="mc-tx"> [] </h1>
+						<div>
+							<button id="dot" type="button" class="btn m-2 btn-secondary btn-lg"> . </button>
+
+							<button id="dash" type="button" class="btn m-2 btn-secondary btn-lg"> _ </button>
+							<button id="clear-tx" type="button" class="btn m-2 btn-danger btn-lg"> Clear </button>
+						</div>
+						<div class="col mt-2">
+							<button id="check-tx" type="button" class="btn m-2 btn-success btn-lg"> Check </button>
+						</div>
+						<div class="col mt-2">
+							<div id="incorrect-tx" class="alert alert-danger" role="alert"> Incorrect 
+							</div> 
+							 <div id="correct-tx" class="alert alert-success" role="alert"> Correct
+							</div>
+						</div>        
+					</form>  
+				</div>
+				<div class="col-2 "></div>
+			</div>
+		</div>
+
+
+
+		<div class="container-fluid my-2 py-3" style="background-color: white;" >
+			<h2> Convert from Morse code </h2>
+			<hr>					
+			<div class="row m-2">
+				<div class="col-4 mt-3">
+					<div class="row d-flex justify-content-center">
+						<h1 id="mc-rx"> Morse code </h1>
+					</div>       
+				</div>
+				<div class="col ml-2 mt-3">
+					<form>
+						<div class="form-group">
+							<h4> Message: </h4>
+							<input id="msg-rx" type="text" class="form-control">
+						</div>
+
+						<div >
+							<button id="check-rx" type="button" class="btn m-2 btn-success btn-lg "> Check </button> 
+						</div>
+						<div class="col mt-2">
+							<div id="incorrect-rx" class="alert alert-danger" role="alert"> Incorrect
+							</div> 
+							 <div id="correct-rx" class="alert alert-success" role="alert"> Correct
+							</div>
+						</div>      
+					</form>  
+				</div>
+				<div class="col-2"></div>
+			</div>
+		</div>
+
+		<div class="row" style="background-color: #343A40">
+			<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+				<p class="h6"> This website has been hosted by Github Pages </p>
+				<p class="h6">© 2020 Rutuparn Pawar < <a style="color: white" href="https://github.com/InputBlackBoxOutput">InputBlackBoxOutput<a> ></p>
+			</div>
+			<hr>
+		</div>
+		
+		<script type="text/javascript" src="learn_morse.js"></script>
+	</body>
+</html>
