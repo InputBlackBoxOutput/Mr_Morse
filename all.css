@@ -8,8 +8,6 @@ body {
 	background-color: white;
 }
 
-#switch{
-	padding: 0.2em 1.5em;
-	border: 2px solid grey;
-	border-radius: 10%;
+#switch {
+	font-size: xxx-large;
 }
