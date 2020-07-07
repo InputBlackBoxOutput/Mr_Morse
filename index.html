@@ -30,31 +30,24 @@
          </div>
       </nav>
 	  
-      <div id="main" class="container-fluid my-2 py-3">
+	  <div id="main" class="container-fluid my-2 py-3">
 		<h2> Converter </h2>	
 		<hr>
-         <div class="row">
-			<div class="col-2 d-flex justify-content-center"> 
-				<h3 id="sw-one"> Text </h3>
+		<div class="row mx-1">	
+			<div class="col-6 form-group">
+				<label class="h5">Message:</label>
+				<textarea class="form-control" id="msg" rows="4" placeholder="Enter text here or upload text file" style="resize: none; font-size: large;"></textarea>
+				<!-- <button id="upload-msg" type="button" class="btn mt-2 btn-secondary btn-block"> Upload .txt file </button> -->
+				<!-- <button id="download-msg" type="button" class="btn mt-2 btn-primary btn-lg">  </button> -->
 			</div>
-			<h1 id="switch" >&#8652; </h1>
-			<div class="col-2 d-flex justify-content-center"> 
-				<h3 id="sw-two"> Morse Code </h3> 
+			
+			<div class="col-6 form-group">
+				<label class="h5">Morse Code:</label>
+				<textarea class="form-control" id="mc" rows="4" placeholder="Enter morse code here (Use period & hypen)" style="resize: none; font-size: large;"></textarea>
+				<!-- <button id="upload-mc" type="button" class="btn mt-2 btn-secondary btn-block"> Upload .txt file </button> -->
+				<!-- <button id="download-mc" type="button" class="btn mt-2 btn-primary btn-lg">  </button> -->
 			</div>
-		 </div>
-
-         <hr>
-         <form>
-            <div class=" row form-group ml-1">
-               <input type="text" class="form-control mr-1" id="inpt" placeholder="Enter text here">
-            </div>
-            <div>
-               <button id="cvt" type="button" class="btn m-2 btn-success"> Convert </button>
-            </div>
-            <div class="ml-1">
-               <h3 id="oupt"></h3>
-            </div>
-         </form>
+		</div>
       </div>
 	  
       <div class="container-fluid my-2 py-3">
@@ -75,9 +68,7 @@
 		<img src="img/morse_code_table.png">
 		<hr>
 		
-		<a href="learn.html">
-		<h3>Learn morse code now!</h3>
-		</a>
+		<a href="learn.html"> <h3>Learn morse code now!</h3> </a>
       </div>
 	  
       <div class="row m-0 p-0" style="background-color: #343A40">

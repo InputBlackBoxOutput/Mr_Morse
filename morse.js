@@ -5,43 +5,16 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////
 // DOM linking 
 
-const inpt = document.getElementById("inpt");
-const oupt = document.getElementById("oupt");
-const convert = document.getElementById("cvt");
-
-// Setting options 
-// 1 = Text to Morse Code 
-// 0 = Morse Code to Text
-setting = 1;
-
-const swtch = document.getElementById('switch');
-const sw_one = document.getElementById('sw-one');
-const sw_two = document.getElementById('sw-two');
+const msg_ = document.getElementById("msg");
+const mc_ = document.getElementById("mc");
 /////////////////////////////////////////////////////////////////////////////////////////////////
-swtch.addEventListener('click', function() {
-	if(setting == 1) {
-		sw_one.innerText = "Morse Code";
-		sw_two.innerText = "Text";
-		inpt.placeholder = "Enter morse code here";
-		setting = 0;
-	}
-	else {
-		sw_one.innerText = "Text";
-		sw_two.innerText = "Morse Code";
-		inpt.placeholder = "Enter text here";
-		setting = 1;
-	}
-
+msg_.addEventListener('keyup', function() {
+		mc_.value= textToMorseCode(msg_.value.trim().toUpperCase());
 })
 
-convert.addEventListener('click', function() {
-	if(setting == 1) 
-		textToMorseCode();
-	else
-		textFromMorseCode();
-});
-
-
+mc_.addEventListener('keyup', function() {
+		msg_.value= textFromMorseCode(mc_.value.trim());
+})
 /////////////////////////////////////////////////////////////////////////////////////////////////
 // Varients:–•
 Morse_Code = {
@@ -55,10 +28,10 @@ Morse_Code = {
 	"V": "•••–",    "W": "•––",     "X": "–••–",  
 	"Y": "–•––",    "Z": "––••",
 
-	"–": "•–––– ",  "2": "••–––",   "3": "•••–– ",
+	"1": "•–––– ",  "2": "••–––",   "3": "•••–– ",
 	"4": "••••– ",  "5": "••••• ",  "6": "–••••",
 	"7": "––•••",   "8": "–––••",   "9": "––––•",
-	"•": "–––––"
+	"0": "–––––"
 };
 // console.log(Morse_Code["A"]);
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -73,51 +46,145 @@ Reverse_Morse_Code = {
 	"•••–": "V",    "•––":   "W",    "–••–": "X",
 	"–•––": "Y",    "––••":  "Z",
 
-	"•––––": "–",  "••–––": "2",  "•••––": "3",
+	"•––––": "1",  "••–––": "2",  "•••––": "3",
 	"••••–": "4",  "•••••": "5",  "–••••": "6",
 	"––•••": "7",  "–––••": "8",  "––––•": "9",
-	"–––––": "•"
+	"–––––": "0"
 };
 // console.log(Reverse_Morse_Code["•–"]);
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
-function textToMorseCode() {
-	let out = "";
-	const t = inpt.value.trim().toUpperCase();
-
-	if(t == "") return;
+function textToMorseCode(inpt) {
+	let oupt = "";
+	if(inpt == "") return "";
 	
-	for(let i=0; i< t.length; i++ ) {
-		if(Morse_Code[t[i]] != undefined)
-			out += Morse_Code[t[i]];
+	for(let i=0; i< inpt.length; i++ ) {
+		if(Morse_Code[inpt[i]] != undefined)
+			oupt += Morse_Code[inpt[i]];
 		else
-			out += t[i];
+			oupt += inpt[i];
 
-		out += " ";
+		oupt += " ";
 	}
-	oupt.innerText = "Morse Code: " + out;
+	return oupt;
 }
 
-function textFromMorseCode() {
-	let out = "";
-	const t = inpt.value.trim() + " ";
-	let T = "";
-
-	if(t == " ") return;
-
-	for(let i=0; i< t.length; i++ ) {
-		T += t[i];
-		if(t[i+1] == " ") {
-			if(Reverse_Morse_Code[T] != undefined) 
-				out += Reverse_Morse_Code[T];
+function convertToDotDash(mc){
+	conv_mc = "";
+	
+	if(/•/.test(mc) && /–/.test(mc)) 
+		return mc;
+	
+	if(/0/.test(mc) && /1/.test(mc)) {
+		for(let i=0; i<mc.length; i++) {
+			if(mc[i] == '0')
+				conv_mc += '•';
+			else if(mc[i] == '1')
+				conv_mc += '–';
 			else
-				out += T;
-
-			T = "";
-			i++;
+				conv_mc += mc[i];
 		}
 	}
-	oupt.innerText = "Text: " + out;
+	
+	if(/./.test(mc) && /-/.test(mc)) {
+		for(let i=0; i<mc.length; i++) {
+			if(mc[i] == '.')
+				conv_mc += '•';
+			else if(mc[i] == '-')
+				conv_mc += '–';
+			else
+				conv_mc += mc[i];
+		}
+	}	
+	return conv_mc;
 }
-/////////////////////////////////////////////////////////////////////////////////////////////////
 
+function textFromMorseCode(inpt) {
+	let oupt = "";
+	inpt = convertToDotDash(inpt);
+	
+	codes = inpt.split(" ");
+	for(let i=0; i<codes.length; i++) {
+		if(Reverse_Morse_Code[codes[i]] != undefined) 
+			oupt += Reverse_Morse_Code[codes[i]];
+		else
+			oupt += codes[i];
+	}
+	return oupt;
+}
+
+/*
+let uploadSetting = -1;
+
+document.getElementById("upload-msg").addEventListener('click', function() {
+	uploadFile()
+	uploadSetting = 0;
+});
+
+document.getElementById("upload-mc").addEventListener('click', function() {
+	uploadFile()
+	uploadSetting = 1;
+});
+
+function uploadFile() {
+	let file = document.createElement("INPUT");
+	file.setAttribute("type", "file");
+
+	file.addEventListener('change', function() {       
+		if (this.files && this.files[0]) {
+			let fileExt = this.files[0].name.split(".")[1];
+			
+			if(fileExt == "txt") {
+				let fr = new FileReader(); 
+				fr.readAsText(this.files[0]); 
+				fr.onload = function(){  
+					let data = fr.result;
+					
+					if(uploadSetting == 0) {
+						msg_.value = data;
+						mc_.value  = textToMorseCode(msg_.value.trim().toUpperCase());
+					} 
+					if(uploadSetting == 1) {
+						mc_.value = data;
+						msg_.value= textFromMorseCode(mc_.value.trim());
+					}
+				}
+			}
+			else 
+				console.log("Not .txt file");
+		}
+	});
+	file.click();
+}
+
+*/
+
+/*
+document.getElementById("download-msg").addEventListener('click', function () {
+ 	downloadFile(msg_.value, 'Mr_Morse.txt', 'text/plain');
+})
+
+document.getElementById("download-mc").addEventListener('click', function () {
+ 	downloadFile(mc_.value, 'Mr_Morse.txt', 'text/plain');
+})
+
+
+function downloadFile(data, fileExt, type) {
+    var file = new Blob([data], {type: type});
+
+    if (window.navigator.msSaveOrOpenBlob) // IE10+
+        window.navigator.msSaveOrOpenBlob(file, fileExt);
+    else { // Others
+        var a = document.createElement("a"), url = URL.createObjectURL(file);
+        a.href = url;
+        a.download = fileExt;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function() {
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);  
+        }, 0); 
+    }
+ }
+ */
+/////////////////////////////////////////////////////////////////////////////////////////////////

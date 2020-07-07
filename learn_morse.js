@@ -14,22 +14,14 @@ const del_tx = document.getElementById("del-tx");
 const clear_tx = document.getElementById("clear-tx");
 const check_tx = document.getElementById("check-tx");
 
-const correct_tx = document.getElementById("correct-tx");
-correct_tx.hidden = true;
-const incorrect_tx = document.getElementById("incorrect-tx");
-incorrect_tx.hidden = true;
-
-
 const mc_rx = document.getElementById("mc-rx");
 const msg_rx = document.getElementById("msg-rx");
 
 const check_rx = document.getElementById("check-rx");
 
-const correct_rx = document.getElementById("correct-rx");
-correct_rx.hidden = true;
-const incorrect_rx = document.getElementById("incorrect-rx");
-incorrect_rx.hidden = true;
 
+const CORRECT = "border:2px solid rgb(89, 160, 89); border-radius:5%; background-color: rgb(109, 180, 109);";
+const WRONG = "border:2px solid rgb(235, 125, 125); border-radius:5%; background-color: rgb(255, 145, 145);";
 /////////////////////////////////////////////////////////////////////////////////////////////////
 Morse_Code = {
 	"A": "•–",      "B": "–•••",    "C": "–•–•", 
@@ -42,10 +34,10 @@ Morse_Code = {
 	"V": "•••–",    "W": "•––",     "X": "–••–",  
 	"Y": "–•––",    "Z": "––••",
 
-	"–": "•–––– ",  "2": "••–––",   "3": "•••–– ",
+	"1": "•–––– ",  "2": "••–––",   "3": "•••–– ",
 	"4": "••••– ",  "5": "••••• ",  "6": "–••••",
 	"7": "––•••",   "8": "–––••",   "9": "––––•",
-	"•": "–––––"
+	"0": "–––––"
 };
 // console.log(Morse_Code["A"]);
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -60,10 +52,10 @@ Reverse_Morse_Code = {
 	"•••–": "V",    "•––":   "W",    "–••–": "X",
 	"–•––": "Y",    "––••":  "Z",
 
-	"•––––": "–",  "••–––": "2",  "•••––": "3",
+	"•––––": "1",  "••–––": "2",  "•••––": "3",
 	"••••–": "4",  "•••••": "5",  "–••••": "6",
 	"––•••": "7",  "–––••": "8",  "––––•": "9",
-	"–––––": "•"
+	"–––––": "0"
 };
 // console.log(Reverse_Morse_Code["01"]);
 
@@ -76,20 +68,21 @@ function generateAlphabet() {
 	clearEnteredMorseCode();
 	alpha = String.fromCharCode(65 + Math.floor(Math.random() * 26));
 	msg_tx.innerText = alpha;
+	mc_tx.style.cssText = "border:2px solid white; border-radius:5%; background-color: white";
 }
 generateAlphabet();
 
 
 dot.addEventListener('click', function() {
 	if(count < 5) {
-		mc_tx.innerText += "•";
+		mc_tx.innerText += " •";
 		count++;
 	}
 });
 
 dash.addEventListener('click', function() {
 	if(count < 5) {
-		mc_tx.innerText += "–";
+		mc_tx.innerText += " –";
 		count++;
 	}
 });
@@ -108,33 +101,42 @@ function clearEnteredMorseCode() {
 	count = 0;
 }
 
+// Correct 109, 180, 109 
+// Wrong 255, 145, 145 
+
 check_tx.addEventListener('click', function() {
 	// Add 3 attempt policy
-	if(Morse_Code[alpha] == mc_tx.innerText) {
-		correct_tx.hidden = false;
-		incorrect_tx.hidden = true;
-	}
-	else {
-		correct_tx.hidden = true;
-		incorrect_tx.hidden = false;
-	}
+	let mc = "";
+	for(let i=0; i< mc_tx.innerText.length; i++)
+		if(mc_tx.innerText[i] != " ")	
+			mc += mc_tx.innerText[i];
+	
+	if(Morse_Code[alpha] == mc)
+		mc_tx.style.cssText = CORRECT;
+	else
+		mc_tx.style.cssText = WRONG;
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////
+let code = "";
+
 function generateMorseCode() {
-	mc_rx.innerText = Morse_Code[String.fromCharCode(65 + Math.floor(Math.random() * 26))];;
+	code = Morse_Code[String.fromCharCode(65 + Math.floor(Math.random() * 26))];
+	for(let i=0; i< code.length; i++) {
+		mc_rx.innerText += " " + code[i];
+	}
 }
 generateMorseCode();
 
+msg_rx.addEventListener("keyup", function() {
+	msg_rx.value = msg_rx.value.toUpperCase();
+});
+
 check_rx.addEventListener('click', function() {
 	if(msg_rx.value != "") {
-		if(Reverse_Morse_Code[mc_rx.innerText] == msg_rx.value.toUpperCase()) {
-			correct_rx.hidden = false;
-			incorrect_rx.hidden = true;
-		}
-		else {
-			correct_rx.hidden = true;
-			incorrect_rx.hidden = false;
-		}
+		if(Reverse_Morse_Code[code] == msg_rx.value)
+			msg_rx.style.cssText = CORRECT;
+		else
+			msg_rx.style.cssText = WRONG;
 	}
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////

@@ -29,50 +29,46 @@
          </div>
       </nav>
 
-		<div id="main" class="container-fluid my-2 py-3" style="background-color: white" >
-			<h2> Transmitting station </h2>	
-			<hr>				
-			<div class="row m-2">
-				<h3> Character: </h3>
-				<h3 id="msg-tx"> </h3>	
-			</div>
-			<div class="row m-2">
-				<h3> Morse Code: </h3>
-				<h3 id="mc-tx"> </h3>
-			</div>
-			<div class="row m-2">
-				<button id="dot" type="button" class="btn m-1 btn-secondary btn"> • </button>
-				<button id="dash" type="button" class="btn m-1 btn-secondary btn"> – </button>
-				<button id="del-tx" type="button" class="btn m-1 btn-warning btn"> &#8592; </button>
-				<button id="clear-tx" type="button" class="btn m-1 btn-danger btn"> Clear </button>
-				<button id="check-tx" type="button" class="btn m-1 btn-success btn"> Check </button>    
-			</div>  
-			<div class="row m-2">
-				<div id="incorrect-tx" class="alert ml-2 alert-danger" role="alert"> Incorrect </div> 
-				<div id="correct-tx" class="alert ml-2 alert-success" role="alert"> Correct</div>
-			</div>
+		<div id="main" class="container-fluid my-2 py-3" >
+			<h2 class="ml-2"> Transmitting station </h2>	
+			<hr>
+			<div class="col"> 
+				<div class="row m-2">
+					<label class="h3 mr-2 text-muted"> Message character: </label>
+					<label class="h3" id="msg-tx"> </label>	
+				</div>
+				<div class="row m-2"> 
+					<label class="h3 mr-2 text-muted"> Morse Code: </label>
+					<label class="h3" id="mc-tx"> </label>
+				</div>
+				<div class="row ml-2">
+					<button id="dot" type="button" class="btn m-1 btn-secondary btn-lg"> • </button>
+					<button id="dash" type="button" class="btn m-1 btn-secondary btn-lg"> – </button>
+					<button id="del-tx" type="button" class="btn m-1 btn-warning btn-lg"> &#8592; </button>
+					<button id="clear-tx" type="button" class="btn m-1 btn-danger btn-lg"> Clear </button>
+					<button id="check-tx" type="button" class="btn m-1 btn-success btn-lg"> Check </button>    
+				</div>  
+			</div>	
 		</div>
 
 
 
-		<div class="container-fluid my-2 py-3" style="background-color: white;">
-			<h2> Recieving station </h2>	
-			<hr>				
-			<div class="row m-2">
-				<h3> Morse code: </h3>
-				<h3 id="mc-rx"> </h3>
-			</div>
-			<div class="row m-2">
-				<h3> Character: </h3>
-				<input id="msg-rx" type="text">
-			</div>
-			<div class="row m-2">
-				<button id="check-rx" type="button" class="btn m-2 btn-success btn"> Check </button>    
-			</div>  
-			<div class="row m-2">
-				<div id="incorrect-rx" class="alert ml-2 alert-danger" role="alert"> Incorrect </div> 
-				<div id="correct-rx" class="alert ml-2 alert-success" role="alert"> Correct </div>
-			</div>
+		<div class="container-fluid my-2 py-3">
+			<h2 class="ml-2"> Recieving station </h2>	
+			<hr>
+			<div class="col">
+				<div class="row m-2">
+					<label class="h3 mr-2 text-muted"> Morse code: </label>
+					<label class="h3" id="mc-rx"> </label>
+				</div>
+				<div class="row m-2 mt-3">
+					<label class="h3 mr-2 text-muted"> Character: </label>
+					<input id="msg-rx" type="text">
+				</div>
+				<div class="row m-2">
+					<button id="check-rx" type="button" class="btn m-2 btn-success btn-lg"> Check </button>    
+				</div>  
+			</div>				
 		</div>
 			
 			
