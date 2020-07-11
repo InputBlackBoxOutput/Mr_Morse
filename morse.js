@@ -7,6 +7,12 @@
 
 const msg_ = document.getElementById("msg");
 const mc_ = document.getElementById("mc");
+
+const upload_msg = document.getElementById("upload-msg");
+const download_msg = document.getElementById("download-msg");
+
+const upload_mc = document.getElementById("upload-mc");
+const download_mc = document.getElementById("download-mc");
 /////////////////////////////////////////////////////////////////////////////////////////////////
 msg_.addEventListener('keyup', function() {
 		mc_.value= textToMorseCode(msg_.value.trim().toUpperCase());
@@ -113,15 +119,15 @@ function textFromMorseCode(inpt) {
 	return oupt;
 }
 
-/*
+/////////////////////////////////////////////////////////////////////////////////////////////////
 let uploadSetting = -1;
 
-document.getElementById("upload-msg").addEventListener('click', function() {
+upload_msg.addEventListener('click', function() {
 	uploadFile()
 	uploadSetting = 0;
 });
 
-document.getElementById("upload-mc").addEventListener('click', function() {
+upload_mc.addEventListener('click', function() {
 	uploadFile()
 	uploadSetting = 1;
 });
@@ -157,15 +163,19 @@ function uploadFile() {
 	file.click();
 }
 
-*/
-
-/*
-document.getElementById("download-msg").addEventListener('click', function () {
- 	downloadFile(msg_.value, 'Mr_Morse.txt', 'text/plain');
+/////////////////////////////////////////////////////////////////////////////////////////////////
+download_msg.addEventListener('click', function () {
+	if(msg_.value != "")
+		downloadFile(msg_.value, 'message.txt', 'text/plain');
+	else
+		alert("Nothing to download!");
 })
 
-document.getElementById("download-mc").addEventListener('click', function () {
- 	downloadFile(mc_.value, 'Mr_Morse.txt', 'text/plain');
+download_mc.addEventListener('click', function () {
+	if(mc_.value != "")
+		downloadFile(mc_.value, 'morse.txt', 'text/plain');
+	else
+		alert("Nothing to download!");
 })
 
 
@@ -186,5 +196,4 @@ function downloadFile(data, fileExt, type) {
         }, 0); 
     }
  }
- */
 /////////////////////////////////////////////////////////////////////////////////////////////////
