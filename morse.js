@@ -19,7 +19,7 @@ msg_.addEventListener('keyup', function() {
 })
 
 mc_.addEventListener('keyup', function() {
-		msg_.value= textFromMorseCode(mc_.value.trim());
+		msg_.value= textFromMorseCode(mc_.value.trim(), 0);
 })
 /////////////////////////////////////////////////////////////////////////////////////////////////
 // Varients:–•
@@ -105,16 +105,22 @@ function convertToDotDash(mc){
 	return conv_mc;
 }
 
-function textFromMorseCode(inpt) {
+function textFromMorseCode(inpt, opt) {
 	let oupt = "";
 	inpt = convertToDotDash(inpt);
 	
 	codes = inpt.split(" ");
 	for(let i=0; i<codes.length; i++) {
 		if(Reverse_Morse_Code[codes[i]] != undefined) 
-			oupt += Reverse_Morse_Code[codes[i]];
+			if(opt == 0)
+				oupt += Reverse_Morse_Code[codes[i]];
+			else
+				oupt += Reverse_Morse_Code[codes[i]] + " ";
 		else
-			oupt += codes[i];
+			if(opt == 0)
+				oupt += codes[i];
+			else
+				oupt += codes[i] + " ";
 	}
 	return oupt;
 }
@@ -152,7 +158,7 @@ function uploadFile() {
 					} 
 					if(uploadSetting == 1) {
 						mc_.value = data;
-						msg_.value= textFromMorseCode(mc_.value.trim());
+						msg_.value= textFromMorseCode(mc_.value.trim(), 1);
 					}
 				}
 			}
