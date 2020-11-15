@@ -49,7 +49,7 @@
 			
 			<div class="col-6 form-group">
 				<label class="h5">Morse Code:</label>
-				<textarea class="form-control" id="mc" rows="4" placeholder="Enter morse code here (Use period & hypen)" style="resize: none; font-size: large;"></textarea>
+				<textarea class="form-control" id="mc" rows="4" placeholder="Enter morse code here (Use period for dot, hyphen for dash and space for pause)" style="resize: none; font-size: large;"></textarea>
 				<div class="row">
 					<div class="col-sm-9">
 						<button id="upload-mc" type="button" class="btn mt-2 btn-secondary btn-block"> Upload .txt file </button>
@@ -63,24 +63,48 @@
       </div>
 	  
       <div class="container-fluid my-2 py-3">
-		<h2> What is morse code?</h2>
-		<hr>
-		<p> 
-			Morse Code was used to send messages over long distances. Morse code messages can be sent using light or by pulses. A telegraph sends pulses in the form of electrical current based on the message that was "tapped out" using the telegraph key.
-			Telegraph operators would key messages using a series of clicks based on the spelling of the words of the messages. An operator on the receiving end would hear the clicks and translate them back into words.
-			With Morse Code, each letter of the alphabet was translated into short and long signals (also known as dots and dashes). The pulse length of a dash is equal to the pulse length of three dots.
-		</p>
-	      	<a href="https://medium.com/input-blackbox-output/morse-code-502e720ddfad?sk=acd59fa6ed6e7700963649250fff37af" target="_blank"> <h4>Know more about Morse code</h4> </a>
+      	<h3>What is Morse code?</h3>
 
-		<h4> Morse code uses the following two tokens</h4>
-		<img src="img/dot.png">
-		<img src="img/dash.png">
+      	<p>Morse code is an obsolete encoding scheme. It is named after Samuel Morse, inventor of the telegraph. It was developed by him for use during telegraph transmission.
+      	In Morse code, every supported character is substituted by a series of ‘dots’ and ‘dashes’ or sometimes just singular ‘dot’ or ‘dash’ and vice versa. An example is shown below.</p>
+
+      	<figure class="figure">
+      	  <img src="img/sos.png" class="figure-img img-fluid rounded" alt="SOS in Morse code">
+      	  <figcaption class="figure-caption text-center">SOS in Morse code</figcaption>
+      	</figure>
+
+      	<p>Morse code token ‘dot’ is equivalent to binary 0 and Morse code token ‘dash’ is equivalent to the binary 1. Morse code is still used today by armies all around the world when all other communications fail.</p>
+
+      	<hr>
+      	<h5>The table below shows the internationally excepted Morse code for all Roman alphabets and digits from 0 to 9</h5>
+
+      	<img src="img/morse_code_table.png" alt="International Morse code table">
+
+      	<hr>
+      	<h3>Why Morse code has different lengths for different characters?</h3>
+
+      	<p>More frequently used characters (such as vowels) have less number of dots or dashes while characters used less frequently have more. This is done in order to improve the telegraph transmission speed.</p>
+
+      	<hr>
+      	<h3>Why Morse code is not used today?</h3>
+      	<p>Morse code is not used because of the following reasons:</p>
+
+      	<ul>
+      		<li>It does not support all characters from all the languages in the world.</li>
+      		<li>It is not prefix code which means that a pause is required after every letter is sent while a longer pause is required after every word. This leads to large transmission time.</li>
+      	</ul>
+
+      	<hr>
+      	<h3>Fun facts about Morse code</h3>
+      	<ul>
+      		<li>The old Nokia text message tone (Remember it?) is morse code for SMS.</li>
+      		<li>One of the most common signals is the distress signal SOS. Three dots, three dashes and three dots. This signal is internationally recognised by treaty.</li>
+      		<li>Morse code can be transmitted by light, radio waves or sound. Wowza that's a lot of communication mediums!</li>
+      	</ul>
+
+
 
 		<hr>
-		<h4> Morse code table:</h4>
-		<img src="img/morse_code_table.png">
-		<hr>
-		
 		<a href="learn.html"> <h3>Learn morse code now!</h3> </a>
       </div>
 	  

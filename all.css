@@ -7,3 +7,7 @@ body {
 .container-fluid {
 	background-color: white;
 }
+
+img {
+	border: 1px solid grey;
+}

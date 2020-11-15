@@ -81,18 +81,18 @@ function convertToDotDash(mc){
 	if(/•/.test(mc) && /–/.test(mc)) 
 		return mc;
 	
-	if(/0/.test(mc) && /1/.test(mc)) {
-		for(let i=0; i<mc.length; i++) {
-			if(mc[i] == '0')
-				conv_mc += '•';
-			else if(mc[i] == '1')
-				conv_mc += '–';
-			else
-				conv_mc += mc[i];
-		}
-	}
+	// if(/0/.test(mc) || /1/.test(mc)) {
+	// 	for(let i=0; i<mc.length; i++) {
+	// 		if(mc[i] == '0')
+	// 			conv_mc += '•';
+	// 		else if(mc[i] == '1')
+	// 			conv_mc += '–';
+	// 		else
+	// 			conv_mc += mc[i];
+	// 	}
+	// }
 	
-	if(/./.test(mc) && /-/.test(mc)) {
+	if(/./.test(mc) || /-/.test(mc)) {
 		for(let i=0; i<mc.length; i++) {
 			if(mc[i] == '.')
 				conv_mc += '•';
